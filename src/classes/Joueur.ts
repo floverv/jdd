@@ -1,4 +1,4 @@
-import { Gobelet } from "./gobelet";
+import { Gobelet } from "./Gobelet";
 
 export class Joueur {
     private _nom: string;
@@ -17,12 +17,19 @@ export class Joueur {
         return this._score;
     }
 
+    /**
+     * Le joueur joue avec le gobelet
+     * @param gobelet 
+     */
     jouer(gobelet: Gobelet) {
-        gobelet.lancer(this._nom);
-        this._score += gobelet.valeur;
+        gobelet.lancer();
         gobelet.afficher_score();
+        this._score += gobelet.valeur;
     }
 
+    /**
+     * Affiche le nombre de points du joueur
+     */
     afficher_score() {
         console.log(`${this._nom} a un total de ${this._score} points`);
     }
