@@ -1,4 +1,4 @@
-import { Gobelet } from "./gobelet";
+import { Gobelet } from "./Gobelet";
 
 export class Joueur {
     private _nom: string;

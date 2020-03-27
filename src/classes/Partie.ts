@@ -1,14 +1,14 @@
-import { Gobelet } from "./gobelet";
-import { Joueur } from "./joueur";
+import { Gobelet } from "./Gobelet";
+import { Joueur } from "./Joueur";
 
 export class Partie {
     private _joueurs: Joueur[];
     private _nb_tours: number;
-    private gobelet: Gobelet;
+    private _gobelet: Gobelet;
 
     constructor(nb_tours: number, nb_des: number) {
         this._nb_tours = nb_tours;
-        this.gobelet = new Gobelet(nb_des);
+        this._gobelet = new Gobelet(nb_des);
         this._joueurs = [];
     }
 
@@ -37,7 +37,7 @@ export class Partie {
             console.log(`Tour numero : ${i}`);
             //Pour chaque joueurs
             this._joueurs.forEach(joueur => {
-                joueur.jouer(this.gobelet);
+                joueur.jouer(this._gobelet);
                 joueur.afficher_score();
             });
         }

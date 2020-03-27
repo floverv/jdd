@@ -1,4 +1,4 @@
-import { De } from "./de";
+import { De } from "./De";
 
 export class Gobelet {
     private _valeur: number;
