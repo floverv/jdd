@@ -12,16 +12,23 @@ export class Partie {
         this._joueurs = [];
     }
 
+    /**
+     * Création des participants
+     */
     initialiser() {
-        let j1 = new Joueur('Florian');
-        this._joueurs.push(j1);
+        let participants :string[] = ['Nicole', 'Manu', 'Michel'];
 
-        let j2 = new Joueur('Melissa');
-        this._joueurs.push(j2);
+        participants.forEach(participant => {
+            let joueur = new Joueur(participant);
+            this._joueurs.push(joueur)
+        });
 
         this.afficherJoueurs();
     }
 
+    /**
+     * Affiche les joueurs participant à la partie
+     */
     afficherJoueurs() {
         console.log('Les joueurs présents sont :');
         this._joueurs.forEach(joueur => {
@@ -29,20 +36,28 @@ export class Partie {
         });
     }
 
+    /**
+     * Lance la partie
+     */
     lancer() {
-        console.log('Que la partie commence !');
+        console.log(`\nQue la partie commence / En ${this._nb_tours} tours avec ${this._gobelet.des} dés !`);
 
-        //Nombre de tous
+        //Nombre de tours
         for (let i = 1; i <= this._nb_tours; i++) {
-            console.log(`Tour numero : ${i}`);
+            console.log(`\nTour numero : ${i}`);
             //Pour chaque joueurs
             this._joueurs.forEach(joueur => {
+                console.log(`\n${joueur.nom} lance le gobelet.`);
                 joueur.jouer(this._gobelet);
+                console.log(`${joueur.nom} ${this._gobelet.afficher_score()}`);
                 joueur.afficher_score();
             });
         }
     }
 
+    /**
+     * Affiche le nom et le score du gagant
+     */
     afficher_gagnant() {
         let scoreGagnant = 0;
         let nomGagnant = '';
@@ -54,6 +69,6 @@ export class Partie {
             }
         });
 
-        console.log(`Le grand gagant est ${nomGagnant}, avec ${scoreGagnant} points.`);
+        console.log(`\nLe grand gagant est ${nomGagnant}, avec ${scoreGagnant} points.`);
     }
 }

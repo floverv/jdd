@@ -13,18 +13,26 @@ export class Gobelet {
         return this._valeur;
     }
 
-    lancer(nom: string) {
+    get des() {
+        return this._des;
+    }
+
+    /**
+     * Lance les dés du gobelet
+     */
+    lancer() {
         this._valeur = 0;
-        console.log(`${nom} lance le gobelet.`);
         for (let i = 1; i <= this._des; i++) {
-            let de: De = new De();
-            de.lancer();
-            console.log(`${nom} fait ${de.valeur}`);
-            this._valeur += de.valeur;
+            let leDe: De = new De();
+            leDe.lancer();
+            this._valeur += leDe.valeur;
         }
     }
 
+    /**
+     * Retourne les points obtenu avec le gobelet
+     */
     afficher_score() {
-        console.log(`Le total du gobelet est ${this._valeur}`);
+        return `fait ${this._valeur}`;
     }
 }
